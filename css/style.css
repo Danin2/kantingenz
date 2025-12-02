@@ -448,6 +448,16 @@ body {
     letter-spacing: 0.5px;
 }
 
+.history-status.siap-diambil {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #013929;
+}
+
+.history-status.menunggu {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #08926b;
+}
+
 .history-status.selesai {
     background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
     color: #065f46;
@@ -1038,6 +1048,69 @@ body {
     font-weight: 600;
     color: #1f2937;
     margin-bottom: 12px;
+}
+
+/* Customer Info Input */
+.customer-info {
+    margin-bottom: 24px;
+}
+
+.customer-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.customer-name-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #fecaca;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f2937;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.customer-name-input:focus {
+    outline: none;
+    border-color: #f87171;
+    box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.1);
+}
+
+.customer-name-input::placeholder {
+    color: #9ca3af;
+}
+
+.input-error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 12px;
+    margin-top: 6px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.error-message svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
 }
 
 .payment-options {
