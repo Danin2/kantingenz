@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KantingenZ - Admin Dashboard</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Mobile Overlay -->
+    <div id="mobileOverlay" class="mobile-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-container">
+            <!-- Sidebar Header -->
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="logo-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
+                            <path d="M2 17L12 22L22 17"></path>
+                            <path d="M2 12L12 17L22 12"></path>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <h1>KantingenZ</h1>
+                        <p>Admin Dashboard</p>
+                    </div>
+                </div>
+                <div class="sidebar-toggle">
+                    <button id="sidebarToggleBtn" class="toggle-btn">
+                        <svg class="chevron-left" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        <svg class="chevron-right" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    <button id="mobileCloseBtn" class="mobile-close-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="sidebar-nav">
+                <div class="nav-item active" data-page="dashboard">
+                    <div class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </div>
+                    <div class="nav-content">
+                        <div class="nav-label">Dashboard</div>
+                        <div class="nav-description">Ringkasan bisnis</div>
+                    </div>
+                    <div class="nav-badge" id="dashboardBadge"></div>
+                </div>
+
+                <div class="nav-item" data-page="orders">
+                    <div class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="nav-content">
+                        <div class="nav-label">Pesanan</div>
+                        <div id="pesanan" class="nav-description">Kelola pesanan</div>
+                    </div>
+                    <div class="nav-badge" id="ordersBadge">3</div>
+                </div>
+
+                <div class="nav-item" data-page="menu">
+                    <div class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
+                            <path d="M2 17L12 22L22 17"></path>
+                            <path d="M2 12L12 17L22 12"></path>
+                        </svg>
+                    </div>
+                    <div class="nav-content">
+                        <div class="nav-label">Menu</div>
+                        <div class="nav-description">Kelola menu</div>
+                    </div>
+                    <div class="nav-badge" id="menuBadge"></div>
+                </div>
+
+                <div class="nav-item" data-page="analytics">
+                    <div class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </div>
+                    <div class="nav-content">
+                        <div class="nav-label">Analitik</div>
+                        <div class="nav-description">Laporan penjualan</div>
+                    </div>
+                    <div class="nav-badge" id="analyticsBadge"></div>
+                </div>
+
+                <div class="nav-item" data-page="settings">
+                    <div class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24M1.54 9.96l4.24 4.24M1 12h6m6 0h6"></path>
+                        </svg>
+                    </div>
+                    <div class="nav-content">
+                        <div class="nav-label">Pengaturan</div>
+                        <div class="nav-description">Pengaturan sistem</div>
+                    </div>
+                    <div class="nav-badge" id="settingsBadge"></div>
+                </div>
+            </nav>
+
+            <!-- User Section -->
+            <div class="sidebar-user">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">Admin User</div>
+                        <div class="user-email">admin@kantingenz.com</div>
+                    </div>
+                    <button class="user-logout">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-container">
+                <div class="header-left">
+                    <button id="mobileMenuBtn" class="mobile-menu-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+
+                    <div class="search-bar">
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" placeholder="Cari pesanan, menu, atau pelanggan..." id="searchInput">
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <!-- Notifications -->
+                    <div class="dropdown" id="notificationsDropdown">
+                        <button class="notification-btn" data-dropdown-toggle="notifications">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                            </svg>
+                            <span class="notification-dot"></span>
+                        </button>
+                        <div class="dropdown-menu" id="notificationsMenu">
+                            <div class="dropdown-header">
+                                <h3>Notifikasi</h3>
+                            </div>
+                            <div class="dropdown-content">
+                                <div class="notification-item">
+                                    <div class="notification-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="notification-content">
+                                        <div class="notification-title">Pesanan Baru</div>
+                                        <div class="notification-desc">ORD-001 - Budi Santoso</div>
+                                        <div class="notification-time">2 menit yang lalu</div>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="notification-content">
+                                        <div class="notification-title">Pesanan Baru</div>
+                                        <div class="notification-desc">ORD-002 - Siti Nurhaliza</div>
+                                        <div class="notification-time">5 menit yang lalu</div>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="notification-content">
+                                        <div class="notification-title">Pesanan Baru</div>
+                                        <div class="notification-desc">ORD-003 - Ahmad Fauzi</div>
+                                        <div class="notification-time">10 menit yang lalu</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Menu -->
+                    <div class="dropdown" id="userDropdown">
+                        <button class="user-btn" data-dropdown-toggle="user">
+                            <div class="user-avatar-small">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu" id="userMenu">
+                            <div class="dropdown-header">
+                                <div class="user-profile-header">
+                                    <div class="user-avatar-large">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                    </div>
+                                    <div class="user-profile-info">
+                                        <div class="user-profile-name">Admin User</div>
+                                        <div class="user-profile-email">admin@kantingenz.com</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-content">
+                                <button class="dropdown-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    Profile
+                                </button>
+                                <button class="dropdown-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                        <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24M1.54 9.96l4.24 4.24M1 12h6m6 0h6">
+                                        </path>
+                                    </svg>
+                                    Pengaturan
+                                </button>
+                                <hr class="dropdown-divider">
+                                <button class="dropdown-item logout">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                        <polyline points="16 17 21 12 16 7"></polyline>
+                                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                                    </svg>
+                                    Keluar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Dashboard Page -->
+            <div id="dashboardPage" class="page active">
+                <div class="page-header">
+                    <h1>Dashboard</h1>
+                    <p>Selamat datang kembali! Ini adalah ringkasan bisnis Anda.</p>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card blue">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Total Pesanan</div>
+                            <div class="stat-value">24</div>
+                            <div class="stat-change positive">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                    <polyline points="17 6 23 6 23 12"></polyline>
+                                </svg>
+                                12% dari bulan lalu
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card green">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Total Pendapatan</div>
+                            <div class="stat-value">Rp 1.2M</div>
+                            <div class="stat-change positive">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                    <polyline points="17 6 23 6 23 12"></polyline>
+                                </svg>
+                                8% dari bulan lalu
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card purple">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
+                                <path d="M2 17L12 22L22 17"></path>
+                                <path d="M2 12L12 17L22 12"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Total Menu</div>
+                            <div class="stat-value">16</div>
+                            <div class="stat-change neutral">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                                14 aktif
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card orange">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Total Pelanggan</div>
+                            <div class="stat-value">156</div>
+                            <div class="stat-change positive">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                    <polyline points="17 6 23 6 23 12"></polyline>
+                                </svg>
+                                5% dari bulan lalu
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders & Quick Actions -->
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Pesanan Terbaru</h2>
+                            <button class="btn-link">Lihat Semua</button>
+                        </div>
+                        <div class="card-content">
+                            <div class="recent-orders">
+                                <div class="recent-order-item">
+                                    <div class="recent-order-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="recent-order-info">
+                                        <div class="recent-order-id">ORD-001</div>
+                                        <div class="recent-order-customer">Budi Santoso</div>
+                                    </div>
+                                    <div class="recent-order-amount">Rp 66.000</div>
+                                    <span class="recent-order-status Menunggu">Menunggu</span>
+                                </div>
+                                <div class="recent-order-item">
+                                    <div class="recent-order-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="recent-order-info">
+                                        <div class="recent-order-id">ORD-002</div>
+                                        <div class="recent-order-customer">Siti Nurhaliza</div>
+                                    </div>
+                                    <div class="recent-order-amount">Rp 50.000</div>
+                                    <span class="recent-order-status Diproses">Diproses</span>
+                                </div>
+                                <div class="recent-order-item">
+                                    <div class="recent-order-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="recent-order-info">
+                                        <div class="recent-order-id">ORD-003</div>
+                                        <div class="recent-order-customer">Ahmad Fauzi</div>
+                                    </div>
+                                    <div class="recent-order-amount">Rp 32.000</div>
+                                    <span class="recent-order-status Siap Diambil">Siap Diambil</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Aksi Cepat</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="quick-actions">
+                                <button class="action-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    Buat Pesanan Baru
+                                </button>
+                                <button class="action-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
+                                        <path d="M2 17L12 22L22 17"></path>
+                                        <path d="M2 12L12 17L22 12"></path>
+                                    </svg>
+                                    Kelola Menu
+                                </button>
+                                <button class="action-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                                    </svg>
+                                    Lihat Laporan
+                                </button>
+                                <button class="action-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                        <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24M1.54 9.96l4.24 4.24M1 12h6m6 0h6">
+                                        </path>
+                                    </svg>
+                                    Pengaturan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Page -->
+            <div id="ordersPage" class="page">
+                <div class="page-header">
+                    <h1>Kelola Pesanan</h1>
+                    <p>Kelola semua pesanan pelanggan</p>
+                </div>
+
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select id="orderStatusFilter">
+                            <option value="all">Semua Status</option>
+                            <option value="Menunggu">Menunggu</option>
+                            <option value="Diproses">Diproses</option>
+                            <option value="Siap Diambil">Siap Diambil</option>
+                            <option value="Selesai">Selesai</option>
+                            <option value="Dibatalkan">Dibatalkan</option>
+                        </select>
+                    </div>
+                    <button class="btn-secondary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                        </svg>
+                        Refresh
+                    </button>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <div class="table-container">
+                            <table class="orders-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID Pesanan</th>
+                                        <th>Pelanggan</th>
+                                        <th>Items</th>
+                                        <th>Total</th>
+                                        <th>Pembayaran</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="order-id">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+                                                    </path>
+                                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                                </svg>
+                                                ORD-001
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="customer-info">
+                                                <div class="customer-name">Budi Santoso</div>
+                                                <div class="customer-phone">0812-3456-7890</div>
+                                            </div>
+                                        </td>
+                                        <td>2 item</td>
+                                        <td class="amount">Rp 66.000</td>
+                                        <td><span class="payment-method cash">Tunai</span></td>
+                                        <td><span class="status-badge Menunggu">Menunggu</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="Detail">
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                        <circle cx="12" cy="12" r="3"></circle>
+                                                    </svg>
+                                                </button>
+                                                <button class="btn-primary btn-sm">Proses</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="order-id">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+                                                    </path>
+                                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                                </svg>
+                                                ORD-002
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="customer-info">
+                                                <div class="customer-name">Siti Nurhaliza</div>
+                                                <div class="customer-phone">0813-9876-5432</div>
+                                            </div>
+                                        </td>
+                                        <td>2 item</td>
+                                        <td class="amount">Rp 50.000</td>
+                                        <td><span class="payment-method qris">QRIS</span></td>
+                                        <td><span class="status-badge Diproses">Diproses</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="Detail">
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                        <circle cx="12" cy="12" r="3"></circle>
+                                                    </svg>
+                                                </button>
+                                                <button class="btn-primary btn-sm">Siap</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="order-id">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+                                                    </path>
+                                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                                </svg>
+                                                ORD-003
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="customer-info">
+                                                <div class="customer-name">Ahmad Fauzi</div>
+                                                <div class="customer-phone">0821-2345-6789</div>
+                                            </div>
+                                        </td>
+                                        <td>1 item</td>
+                                        <td class="amount">Rp 32.000</td>
+                                        <td><span class="payment-method cash">Tunai</span></td>
+                                        <td><span class="status-badge Siap Diambil">Siap Diambil</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="Detail">
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                        <circle cx="12" cy="12" r="3"></circle>
+                                                    </svg>
+                                                </button>
+                                                <button class="btn-primary btn-sm">Selesai</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Page -->
+            <div id="menuPage" class="page">
+                <div class="page-header">
+                    <h1>Kelola Menu</h1>
+                    <p>Kelola menu makanan dan minuman</p>
+                    <button class="btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Tambah Menu
+                    </button>
+                </div>
+
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>Kategori</label>
+                        <select id="menuCategoryFilter">
+                            <option value="all">Semua Kategori</option>
+                            <option value="makanan">Makanan</option>
+                            <option value="minuman">Minuman</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <div class="menu-header">
+                            <div class="menu-info">
+                                <h3>Gorengan</h3>
+                                <span class="menu-category">Makanan</span>
+                            </div>
+                            <div class="menu-rating">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                                4.8
+                            </div>
+                        </div>
+                        <div class="menu-body">
+                            <div class="menu-meta">
+                                <div class="menu-price">Rp 25.000</div>
+                                <div class="menu-time">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    15 menit
+                                </div>
+                            </div>
+                            <div class="menu-actions">
+                                <button class="btn-secondary btn-sm">Edit</button>
+                                <button class="btn-secondary btn-sm">Nonaktif</button>
+                                <button class="btn-secondary btn-sm">Hapus</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card">
+                        <div class="menu-header">
+                            <div class="menu-emoji">🍜</div>
+                            <div class="menu-info">
+                                <h3>Mie Ayam Bakso</h3>
+                                <span class="menu-category">Makanan</span>
+                            </div>
+                            <div class="menu-rating">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                                4.6
+                            </div>
+                        </div>
+                        <div class="menu-body">
+                            <p class="menu-description">Mie ayam dengan bakso urat dan pangsit goreng</p>
+                            <div class="menu-meta">
+                                <div class="menu-price">Rp 22.000</div>
+                                <div class="menu-time">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    10 menit
+                                </div>
+                            </div>
+                            <div class="menu-actions">
+                                <button class="btn-secondary btn-sm">Edit</button>
+                                <button class="btn-secondary btn-sm">Nonaktif</button>
+                                <button class="btn-secondary btn-sm">Hapus</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-card">
+                        <div class="menu-header">
+                            <div class="menu-emoji">🧋</div>
+                            <div class="menu-info">
+                                <h3>Es Teh Manis</h3>
+                                <span class="menu-category">Minuman</span>
+                            </div>
+                            <div class="menu-rating">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                                4.7
+                            </div>
+                        </div>
+                        <div class="menu-body">
+                            <p class="menu-description">Teh manis dingin dengan es batu</p>
+                            <div class="menu-meta">
+                                <div class="menu-price">Rp 8.000</div>
+                                <div class="menu-time">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    5 menit
+                                </div>
+                            </div>
+                            <div class="menu-actions">
+                                <button class="btn-secondary btn-sm">Edit</button>
+                                <button class="btn-secondary btn-sm">Nonaktif</button>
+                                <button class="btn-secondary btn-sm">Hapus</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Page -->
+            <div id="analyticsPage" class="page">
+                <div class="page-header">
+                    <h1>Analitik</h1>
+                    <p>Laporan dan analisis bisnis</p>
+                </div>
+
+
+                <div class="analytics-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Grafik Penjualan</h2>
+                            <select id="chartPeriod">
+                                <option value="7">7 Hari Terakhir</option>
+                                <option value="30">30 Hari Terakhir</option>
+                                <option value="90">3 Bulan Terakhir</option>
+                            </select>
+                        </div>
+                        <div class="card-content">
+                            <div id="salesChart"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Menu Terlaris</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="top-menu-list">
+                            <div class="top-menu-item">
+                                <div class="top-menu-rank">1</div>
+                                <div class="top-menu-name">Nasi Goreng Spesial</div>
+                                <div class="top-menu-sales">45x</div>
+                            </div>
+                            <div class="top-menu-item">
+                                <div class="top-menu-rank">2</div>
+                                <div class="top-menu-name">Ayam Bakar Madu</div>
+                                <div class="top-menu-sales">38x</div>
+                            </div>
+                            <div class="top-menu-item">
+                                <div class="top-menu-rank">3</div>
+                                <div class="top-menu-name">Es Teh Manis</div>
+                                <div class="top-menu-sales">32x</div>
+                            </div>
+                            <div class="top-menu-item">
+                                <div class="top-menu-rank">4</div>
+                                <div class="top-menu-name">Jus Alpukat</div>
+                                <div class="top-menu-sales">28x</div>
+                            </div>
+                            <div class="top-menu-item">
+                                <div class="top-menu-rank">5</div>
+                                <div class="top-menu-name">Mie Ayam Bakso</div>
+                                <div class="top-menu-sales">25x</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div id="settingsPage" class="page">
+            <div class="page-header">
+                <h1>Pengaturan</h1>
+                <p>Kelola pengaturan aplikasi</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>Pengaturan Umum</h2>
+                </div>
+                <div class="card-content">
+                    <form class="settings-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Nama Restoran</label>
+                                <input type="text" value="KantingenZ" />
+                            </div>
+                            <div class="form-group">
+                                <label>Telepon Restoran</label>
+                                <input type="tel" value="+62 812-3456-7890" />
+                            </div>
+                            <div class="form-group">
+                                <label>Email Restoran</label>
+                                <input type="email" value="info@kantingenz.com" />
+                            </div>
+                            <div class="form-group">
+                                <label>Alamat Restoran</label>
+                                <input type="text" value="Jl. Contoh No. 123, Jakarta" />
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary">Simpan Pengaturan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span id="toastMessage">Success!</span>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+    <script src="js/admin.js"></script>
+
+
+</body>
+
+</html>
